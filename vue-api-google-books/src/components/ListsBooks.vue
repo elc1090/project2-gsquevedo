@@ -1,5 +1,5 @@
 <template>
-
+    <ImageBook/>
 </template>
 <script>
 import { ref } from 'vue'
@@ -11,7 +11,7 @@ export default {
 
     },
     components: {
-
+        ImageBook
     },
     setup(){
         return {}
