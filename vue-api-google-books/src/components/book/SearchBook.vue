@@ -7,6 +7,7 @@
             <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
         </div>
         <div v-if="books.length">
+            
             <BooksList :books="books"/>
         </div>
     </form>
