@@ -7,7 +7,6 @@
             <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
         </div>
         <div v-if="books.length">
-            
             <BooksList :books="books"/>
         </div>
     </form>
@@ -31,6 +30,7 @@ export default {
             try {
                 const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:${searchTitle.value}`);
                 books.value = response.data.items;
+                console.log(books.value)
             } catch (error) {
                 throw new Error('Erro na requisição');
             }
