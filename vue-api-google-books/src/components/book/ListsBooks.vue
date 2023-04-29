@@ -1,19 +1,16 @@
 <template>
-    <ImageBook/>
+    <SearchBook/>
 </template>
 <script>
-import { ref } from 'vue'
-import ImageBook from './ImageBook.vue'
+import SearchBook from './SearchBook.vue';
 
 export default {
     name: "ListsBooks",
-    props: {
-
-    },
     components: {
-        ImageBook
+        SearchBook
     },
     setup(){
+        
         return {}
     },
 }
