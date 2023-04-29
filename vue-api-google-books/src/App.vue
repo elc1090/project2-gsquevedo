@@ -1,18 +1,17 @@
 <template>
-  <div>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <ListsBooks/>
+  <div id="app">
+    <SearchBook/>
   </div>
 </template>
 
 <script>
 
-import ListsBooks from './components/book/ListsBooks.vue';
+import SearchBook from './components/book/SearchBook.vue';
 
 export default {
   name: 'App',
   components: {
-    ListsBooks
+    SearchBook
   }
 }
 </script>
