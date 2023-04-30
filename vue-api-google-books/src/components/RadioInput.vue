@@ -23,7 +23,8 @@ export default {
         },
         value: {
             type: String,
-            required: true
+            required: true,
+            default: "title"
         }
     },
     setup(props, { emit }) {

@@ -1,15 +1,17 @@
 <template>
     <div class="query">
-        <h1>Busque seu livro</h1>
+        <h1>BUSQUE SEU LIVRO</h1>
         <form @submit.prevent="onSubmit">
-        <div>
-            <InputText v-model="searchTitle" :type="'text'" :placeholder="'Digite o titulo do livro'" />
-            <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
-        </div>
-        <RadioInput v-model="selectedValue" :name="'radio-group'" :options="options" />
-        <div v-if="books.length">
-            <BooksList :books="books" />
-        </div>
+            <div>
+                <InputText v-model="searchBook" :type="'text'" :placeholder="'Digite as informações do livro'" />
+                <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
+            </div>
+            <RadioInput v-model="selected" :name="'radio-group'" :options="group" />
+            <SelectOrder name="Ordenado por: " :options="options"  v-model="orderBy" />
+            <div v-if="books.length">
+                <BooksList :books="books"/>
+            </div>
+            
         </form>
     </div>
 </template>
@@ -21,22 +23,31 @@ import InputText from "../InputText.vue";
 import ButtonSearch from "../ButtonSearch.vue";
 import BooksList from "./BooksList.vue";
 import RadioInput from "../RadioInput.vue";
+import SelectOrder from '../SelectOrder.vue';
 
 export default {
     name: "SearchBook",
     setup() {
         const books = ref([]);
-        const searchTitle = ref("");
-        const selectedValue = ref("");
-        const options = [
+        const searchBook = ref("");
+        const selected = ref("title");
+        const orderBy = ref("relevance");
+
+        const group = [
             { label: 'Autor', value: 'author' }, 
-            { label: 'Título', value: 'title' }
+            { label: 'Título', value: 'title' },
+            { label: 'ISBN', value: 'isbn'}
         ];
+
+        const options = [
+            { label: 'Newest', value: 'newest' },
+            { label: 'Relevance', value: 'relevance' }
+        ] 
 
         async function search() {
             try {
                 const response = await axios.get(
-                    `https://www.googleapis.com/books/v1/volumes?q=${selectedValue.value}:${searchTitle.value}&orderBy=relevance`
+                    `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}`
                 );
                 books.value = response.data.items;
             } catch (error) {
@@ -50,9 +61,11 @@ export default {
 
         return {
             books,
-            searchTitle,
-            selectedValue,
+            searchBook,
+            selected,
             options,
+            group,
+            orderBy,
             onSubmit
         };
     },
@@ -61,6 +74,7 @@ export default {
         ButtonSearch,
         BooksList,
         RadioInput,
+        SelectOrder
     }
 };
 </script>
