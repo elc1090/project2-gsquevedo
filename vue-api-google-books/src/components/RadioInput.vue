@@ -30,7 +30,7 @@ export default {
         const selected = ref(props.value)
 
         watch(selected, (newValue) => {
-        emit('update:modelValue', newValue)
+            emit('update:modelValue', newValue)
         })
 
         return {
