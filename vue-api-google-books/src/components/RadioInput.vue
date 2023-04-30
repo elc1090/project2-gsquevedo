@@ -1,45 +1,45 @@
 <template>
-  <div class="radio">
-    <label v-for="(option, index) in options" :key="index">
-      <input type="radio" :name="name" :value="option.value" v-model="selected">
-      {{ option.label }}
-    </label>
-  </div>
+    <div class="radio">
+        <label v-for="(option, index) in options" :key="index">
+        <input type="radio" :name="name" :value="option.value" v-model="selected">
+        {{ option.label }}
+        </label>
+    </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true
+    name: "RadioInput",
+    props: {
+        name: {
+        type: String,
+        required: true
+        },
+        options: {
+        type: Array,
+        required: true
+        },
+        value: {
+        type: String,
+        required: true
+        }
     },
-    options: {
-      type: Array,
-      required: true
-    },
-    value: {
-      type: String,
-      required: true
+    setup(props, { emit }) {
+        const selected = ref(props.value)
+
+        watch(selected, (newValue) => {
+        emit('update:modelValue', newValue)
+        })
+
+        return {
+        selected
+        }
     }
-  },
-  setup(props, { emit }) {
-    const selected = ref(props.value)
-  
-    const updateSelected = (event) => {
-      selected.value = event.target.value
-      emit('update:modelValue', selected.value)
-    }
-  
-    return {
-      selected,
-      updateSelected
-    }
-  }
 }
 </script>
+
 <style scoped>
 .radio {
   display: flex;
@@ -54,9 +54,3 @@ export default {
   color: #333;
 }
 </style>
-
-
-
-
-
-

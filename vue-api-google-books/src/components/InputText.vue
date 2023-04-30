@@ -3,16 +3,10 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch} from 'vue'
 
 export default {
-    setup() {
-        const inputValue = ref("")
-
-        return {
-            inputValue
-        }
-    },
+    name: "InputText",
     props: {
         type: {
             type: String,
@@ -21,6 +15,18 @@ export default {
         },
         placeholder: {
             type: String
+        }
+    },
+    setup(props, { emit }) {
+        const inputValue = ref(props.value)
+
+        watch(inputValue, (newValue) => {
+            emit('update:inputValue', newValue)
+        })
+
+        return {
+            inputValue,
+            watch
         }
     }
 }
