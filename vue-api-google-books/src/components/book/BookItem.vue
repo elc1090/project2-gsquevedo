@@ -6,34 +6,33 @@
             </template>
             <template v-else>
                 <img
-                src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg"
-                :alt="volumeInfo.title"
-                width="128"
+                    src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg"
+                    :alt="volumeInfo.title"
+                    width="128"
                 >
             </template>
             <h4>{{ volumeInfo.title }}</h4>
         </a>
     </div>
 </template>
-
+  
 <script>
+import { computed } from 'vue';
+  
 export default {
     name: "BookItem",
-    components: {
-    },
-    setup(){
-        return {}
-    },
     props: {
         books: {
             type: Object,
             required: true
         }
     },
-    computed: {
-        volumeInfo(){
-            return this.books.volumeInfo
-        }
+    setup(props) {
+        const volumeInfo = computed(() => props.books.volumeInfo);
+        
+        return {
+            volumeInfo
+        };
     }
 }
 </script>

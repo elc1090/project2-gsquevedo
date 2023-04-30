@@ -1,16 +1,16 @@
 <template>
     <div class="query">
-      <h1>Busque seu livro</h1>
-      <form @submit.prevent="onSubmit">
+        <h1>Busque seu livro</h1>
+        <form @submit.prevent="onSubmit">
         <div>
-          <InputText v-model="searchTitle" :type="'text'" :placeholder="'Digite o titulo do livro'" />
-          <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
+            <InputText v-model="searchTitle" :type="'text'" :placeholder="'Digite o titulo do livro'" />
+            <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
         </div>
         <RadioInput v-model="selectedValue" :name="'radio-group'" :options="options" />
         <div v-if="books.length">
-          <BooksList :books="books" />
+            <BooksList :books="books" />
         </div>
-      </form>
+        </form>
     </div>
 </template>
   
@@ -25,43 +25,43 @@ import RadioInput from "../RadioInput.vue";
 export default {
     name: "SearchBook",
     setup() {
-    const books = ref([]);
-    const searchTitle = ref("");
-    const selectedValue = ref("");
-    const options = [
-        { label: 'Autor', value: 'author' }, 
-        { label: 'Título', value: 'title' }
-    ];
+        const books = ref([]);
+        const searchTitle = ref("");
+        const selectedValue = ref("");
+        const options = [
+            { label: 'Autor', value: 'author' }, 
+            { label: 'Título', value: 'title' }
+        ];
 
-    async function search() {
-        try {
-        const response = await axios.get(
-            `https://www.googleapis.com/books/v1/volumes?q=${selectedValue.value}:${searchTitle.value}&orderBy=relevance`
-        );
-        books.value = response.data.items;
-        } catch (error) {
-        throw new Error("Erro na requisição");
+        async function search() {
+            try {
+                const response = await axios.get(
+                    `https://www.googleapis.com/books/v1/volumes?q=${selectedValue.value}:${searchTitle.value}&orderBy=relevance`
+                );
+                books.value = response.data.items;
+            } catch (error) {
+                throw new Error("Erro na requisição");
+            }
         }
-    }
 
-    const onSubmit = () => {
-        search();
-    };
+        const onSubmit = () => {
+            search();
+        };
 
-    return {
-        books,
-        searchTitle,
-        selectedValue,
-        options,
-        onSubmit
-    };
+        return {
+            books,
+            searchTitle,
+            selectedValue,
+            options,
+            onSubmit
+        };
     },
     components: {
-    InputText,
-    ButtonSearch,
-    BooksList,
-    RadioInput,
-    },
+        InputText,
+        ButtonSearch,
+        BooksList,
+        RadioInput,
+    }
 };
 </script>
   

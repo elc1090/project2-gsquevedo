@@ -14,16 +14,16 @@ export default {
     name: "RadioInput",
     props: {
         name: {
-        type: String,
-        required: true
+            type: String,
+            required: true
         },
         options: {
-        type: Array,
-        required: true
+            type: Array,
+            required: true
         },
         value: {
-        type: String,
-        required: true
+            type: String,
+            required: true
         }
     },
     setup(props, { emit }) {
@@ -34,7 +34,8 @@ export default {
         })
 
         return {
-        selected
+            selected,
+            watch
         }
     }
 }
@@ -42,15 +43,15 @@ export default {
 
 <style scoped>
 .radio {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .radio label {
-  font-size: 18px;
-  color: #333;
+    font-size: 18px;
+    color: #333;
 }
 </style>
