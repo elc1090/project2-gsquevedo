@@ -29,9 +29,9 @@ export default {
     name: "SearchBook",
     setup() {
         const books = ref([]);
-        const searchBook = ref("");
-        const selected = ref("title");
-        const orderBy = ref("relevance");
+        const searchBook = ref('');
+        const selected = ref('title');
+        const orderBy = ref('relevance');
 
         const group = [
             { label: 'Autor', value: 'author' }, 
