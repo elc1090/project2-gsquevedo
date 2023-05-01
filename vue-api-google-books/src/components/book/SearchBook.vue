@@ -46,12 +46,10 @@ export default {
 
         async function search() {
             try {
-                console.log(selected.value, searchBook.value)
                 const response = await axios.get(
                     `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}`
                 );
                 books.value = response.data.items;
-                console.log(books.value)
             } catch (error) {
                 throw new Error("Erro na requisição");
             }

@@ -1,4 +1,4 @@
-# Desenvolvimento Web - Books API
+# Desenvolvimento Web - Google Books API
 O objetivo desse trabalho é utilizar o Google Books API para realizar pesquisas de livros.
 Os livros podem ser filtrados pelo nome do autor, título do livro e sua classificação.
 O foco era a manipulação do Vue 3 utilizando componentes e aprendendo o Composition API.
