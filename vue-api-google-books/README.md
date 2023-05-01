@@ -7,8 +7,9 @@ O foco era a manipulação do Vue 3 utilizando componentes e aprendendo o Compos
 Gabriele Soares Quevedo
 
 ## Tecnologias
-- Vue.js
 - JavaScript
+- Vue.js
+- Google Books API
 
 ## Ambiente de Desenvolvimento
 - VS Code
@@ -17,7 +18,7 @@ Gabriele Soares Quevedo
 - Vercel (Hospedagem)
   
 ## Bastidores 
-- Utilização dos componentes do Vue
+- Uso dos componentes do Vue
 - Aprendi a utilizar a plataforma de hospedagem Vercel
 
 ## Link de acesso
