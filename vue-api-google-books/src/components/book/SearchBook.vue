@@ -6,12 +6,13 @@
                 <InputText v-model="searchBook" :type="'text'" :placeholder="'Digite as informações do livro'" />
                 <ButtonSearch class="btnSearch" :type="'submit'"> Pesquisar </ButtonSearch>
             </div>
-            <RadioInput v-model="selected" :name="'radio-group'" :options="group" />
-            <SelectOrder name="Ordenado por: " :options="options"  v-model="orderBy" />
+            <div class="filter">
+                <RadioInput v-model="selected" :name="'radio-group'" :options="group" />
+                <SelectOrder name="Filtrar Por: " :options="options"  v-model="orderBy" />
+            </div>
             <div v-if="books.length">
                 <BooksList :books="books"/>
             </div>
-            
         </form>
     </div>
 </template>
@@ -51,6 +52,7 @@ export default {
                     `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}`
                 );
                 books.value = response.data.items;
+                console.log(books.value)
             } catch (error) {
                 throw new Error("Erro na requisição");
             }
@@ -96,5 +98,11 @@ export default {
 .btnSearch:hover {
     background-color: #459689;
     color: #f3f3f9;
+}
+.filter{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
 }
 </style>

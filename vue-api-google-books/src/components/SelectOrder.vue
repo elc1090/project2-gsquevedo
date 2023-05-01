@@ -55,11 +55,12 @@ export default {
 label {
   margin-bottom: 8px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+  
 }
 
 select {
-  padding: 8px;
+  padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
