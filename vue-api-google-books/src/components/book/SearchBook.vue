@@ -31,23 +31,22 @@ export default {
     setup() {
         const books = ref([]);
         const searchBook = ref('');
-        const selected = ref('title');
+        const selected = ref('');
         const orderBy = ref('relevance');
 
         const group = [
             { label: 'Autor', value: 'author' }, 
-            { label: 'Título', value: 'title' },
-            { label: 'ISBN', value: 'isbn'}
+            { label: 'Título', value: 'title' }
         ];
 
         const options = [
-            { label: 'Selecione uma opção', value: 'default' },
-            { label: 'Newest', value: 'newest' },
-            { label: 'Relevance', value: 'relevance' }
+            { label: 'Atuais', value: 'newest' },
+            { label: 'Relevância', value: 'relevance' }
         ] 
 
         async function search() {
             try {
+                console.log(selected.value, searchBook.value)
                 const response = await axios.get(
                     `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}`
                 );

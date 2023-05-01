@@ -1,24 +1,24 @@
-# vue-api-google-books
+# Desenvolvimento Web - Books API
+O objetivo desse trabalho é utilizar o Google Books API para realizar pesquisas de livros.
+Os livros podem ser filtrados pelo nome do autor, título do livro e sua classificação.
+O foco era a manipulação do Vue 3 utilizando componentes e aprendendo o Composition API.
 
-## Project setup
-```
-npm install
-```
+## Desenvolvedor(a)
+Gabriele Soares Quevedo
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Tecnologias
+- Vue.js
+- JavaScript
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Ambiente de Desenvolvimento
+- VS Code
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Créditos 
+- Vercel (Hospedagem)
+  
+## Bastidores 
+- Utilização dos componentes do Vue
+- Aprendi a utilizar a plataforma de hospedagem Vercel
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Link de acesso
+https://project2-gsquevedo.vercel.app/
