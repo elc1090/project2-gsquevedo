@@ -2,7 +2,7 @@
     <div class="select">
         <label :for="name">{{ name }}</label>
         <select :name="name" v-model="selected">
-            <option v-for="(option, index) in options" :value="option.value" :key="index">{{ option.label }}</option>
+            <option class="group" v-for="(option, index) in options" :value="option.value" :key="index">{{ option.label }}</option>
         </select>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
         value: {
             type: String,
             required: true,
-            default: ""
+            default: "default"
         }
     },
 
@@ -43,19 +43,22 @@ export default {
 }
 </script>
 <style scoped>
-.form-group {
+.select {
+    margin-top: 15px;
+}
+.group {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
 }
 
-.form-label {
+label {
   margin-bottom: 8px;
   font-weight: bold;
   font-size: 16px;
 }
 
-.form-select {
+select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

@@ -40,6 +40,7 @@ export default {
         ];
 
         const options = [
+            { label: 'Selecione uma opção', value: 'default' },
             { label: 'Newest', value: 'newest' },
             { label: 'Relevance', value: 'relevance' }
         ] 
