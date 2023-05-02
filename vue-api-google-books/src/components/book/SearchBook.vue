@@ -32,6 +32,7 @@ export default {
         const books = ref([]);
         const searchBook = ref('');
         const selected = ref('');
+        const maxResults = ref('15')
         const orderBy = ref('relevance');
 
         const group = [
@@ -47,7 +48,7 @@ export default {
         async function search() {
             try {
                 const response = await axios.get(
-                    `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}`
+                    `https://www.googleapis.com/books/v1/volumes?q=${selected.value}:${searchBook.value}&orderBy=${orderBy.value}&maxResults=${maxResults.value}`
                 );
                 books.value = response.data.items;
             } catch (error) {
